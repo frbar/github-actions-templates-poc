@@ -20,3 +20,25 @@ jobs:
     with:
       name: ${{ github.event.inputs.name }}
     
+  C:
+    runs-on: ubuntu-latest
+    outputs:
+      greetings: ${{ steps.gr33t.outputs.greetings }}
+    steps:
+      - name: This is Init
+        run: echo "zzz... getting ready..."
+
+      - name: Set output
+        id: gr33t
+        run: echo "greetings=Hello ${{ inputs.name }}" >> $GITHUB_OUTPUT
+
+  D:
+    runs-on: ubuntu-latest
+    needs: C
+    if: needs.C.outputs.greetings == 'Hello D'
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Hello World
+        run: echo "Hello, ${{ inputs.name }}!"

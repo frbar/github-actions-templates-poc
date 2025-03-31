@@ -35,7 +35,7 @@ jobs:
   D:
     runs-on: ubuntu-latest
     needs: C
-    if: needs.C.outputs.greetings == 'Hello D'
+    if: ${{ needs.C.outputs.greetings }} == 'Hello D'
     steps:
       - name: Checkout code
         uses: actions/checkout@v3

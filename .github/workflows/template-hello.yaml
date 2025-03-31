@@ -19,7 +19,7 @@ jobs:
 
       - name: Set output
         id: gr33t
-        run: echo "::set-output greetings=Hello ${{ inputs.name }}"
+        run: echo "greetings=Hello ${{ inputs.name }}" >> $GITHUB_OUTPUT
 
   hello:
     runs-on: ubuntu-latest

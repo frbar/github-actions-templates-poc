@@ -9,9 +9,27 @@ on:
         description: "Name of the person to greet"
 
 jobs:
-  build:
+  init:
     runs-on: ubuntu-latest
+    steps:
+      - name: This is Init
+        run: echo "zzz... getting ready..."
 
+  hello:
+    runs-on: ubuntu-latest
+    needs: init
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Hello World
+        run: echo "Hello, ${{ inputs.name }}!"
+
+
+  hello-if:
+    runs-on: ubuntu-latest
+    needs: init
+    if: ${{ inputs.name == 'if' }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v3

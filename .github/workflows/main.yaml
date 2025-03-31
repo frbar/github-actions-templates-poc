@@ -9,8 +9,14 @@ on:
         description: "Name of the person to greet"
 
 jobs:
-  build:
+  A:
     uses: ./.github/workflows/template-hello.yaml
+    with:
+      name: ${{ github.event.inputs.name }}
+
+  B:
+    uses: ./.github/workflows/template-hello.yaml
+    if: ${{ github.event.inputs.name == 'B' }}
     with:
       name: ${{ github.event.inputs.name }}
     

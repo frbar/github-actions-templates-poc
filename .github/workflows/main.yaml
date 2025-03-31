@@ -1,0 +1,16 @@
+name: Hello!
+
+on:
+  workflow_dispatch:
+    inputs:
+      name:
+        required: true
+        type: string
+        description: "Name of the person to greet"
+
+jobs:
+  build:
+    uses: ./.github/workflows/template-hello.yaml
+    with:
+      name: ${{ github.inputs.name }}
+    

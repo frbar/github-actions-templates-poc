@@ -16,7 +16,7 @@ jobs:
 
   B:
     uses: ./.github/workflows/template-hello.yaml
-    if: ${{ github.event.inputs.name == 'B' }}
+    if: github.event.inputs.name == 'B'
     with:
       name: ${{ github.event.inputs.name }}
     
@@ -35,7 +35,7 @@ jobs:
   D:
     runs-on: ubuntu-latest
     needs: C
-    if: ${{ needs.C.outputs.greetings }} == 'Hello D'
+    if: needs.C.outputs.greetings == 'Hello D'
     steps:
       - name: Checkout code
         uses: actions/checkout@v3

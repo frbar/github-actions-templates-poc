@@ -12,5 +12,5 @@ jobs:
   build:
     uses: ./.github/workflows/template-hello.yaml
     with:
-      name: ${{ github.inputs.name }}
+      name: ${{ github.event.inputs.name }}
     
